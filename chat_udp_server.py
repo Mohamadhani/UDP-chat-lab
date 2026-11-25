@@ -76,7 +76,11 @@ def run_server():
                 data, addr = sock.recvfrom(BUFFER_SIZE)
             except ConnectionResetError:
                 continue  # Windows: ICMP "port unreachable" from a client that vanished
-            handle_datagram(sock, addr, data.decode('utf-8', errors='replace'))
+            #-----------------------------
+            #handle_datagram(sock, addr, data.decode('utf-8', errors='replace'))---->false 
+            text = data.decode('utf-8', errors='replace')
+            handle_datagram(sock, addr, text)
+            #-----------------------------
     except KeyboardInterrupt:
         print("\n[SERVER] Shutting down.")
     finally:

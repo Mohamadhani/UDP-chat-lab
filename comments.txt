@@ -1,0 +1,17 @@
+python chat_udp_server.py
+
+python chat_udp_client.py Ahmed
+او
+python chat_udp_client.py Ahmed 127.0.0.1 5000
+
+python chat_udp_client.py Mohamed
+python chat_udp_client.py Hani
+
+
+/list  ----------> Online: Ahmed, Mohamed----------------------------> List online users
+hi ------------------ > all clients----------------------------------> Public message
+/msg Mohamed Hello ---> Private Mesmoge from ahmed to  mehamed-------> Private message
+/msg Ali Hello--------> User 'Ali' not found.
+/msg Mohamed ---------> Usage: /msg <user> <text>
+/hello----------------> Unknown command.-----------------------------> Unknown command
+/quit ----------------> Goodbye!-------------------------------------> Exit

@@ -7,17 +7,20 @@ BUFFER_SIZE = 4096
 
 def receive_loop(sock, goodbye):
     """Print every datagram coming from the server."""
+    print("[DEBUG] Receive thread started", flush=True)
     while True:
         try:
-            data, _ = sock.recvfrom(BUFFER_SIZE)
-        except OSError:
+            data, addr = sock.recvfrom(BUFFER_SIZE)
+
+        except OSError as e:
             return
+
         text = data.decode('utf-8', errors='replace')
         print(text, flush=True)
+        
         if text == "Goodbye!":
             goodbye.set()
             return
-
 
 def run_client(host, port, nickname):
     server = (host, port)
